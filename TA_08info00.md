@@ -11,4 +11,4 @@ Entre sus principales caracteristicas es que es un software abierto al público,
 
 # Librerías disponibles.
 
-https://streamlit.io es una librería que hace costrucción d epáginas web muy rápidas, es algo desechable pero si se sabe trabajar salen proyectos muy buenos.
+https://streamlit.io es una librería que hace costrucción de páginas web muy rápidas, es algo desechable pero si se sabe trabajar salen proyectos muy buenos.
