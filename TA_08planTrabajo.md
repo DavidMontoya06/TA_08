@@ -1,7 +1,7 @@
 # Actividades para el desarrollo del proyecto:
 * 1- Adquirir conocimientos para la creación del repositorio, GitHub, Replit y teams de replit.
 * 2- Solicitar información para llevar a cabo el permiso de ingreso a la Universidad con fines institucionales dirigidos al proyecto.
-* 3- Establecer el cronograma y actividades junto con proyectos que realizaremos para llevar a cabo el trabajo de aplicacion (Unal Med Botánica)
+* 3- Establecer el cronograma y actividades junto con proyectos que realizaremos para llevar a cabo el trabajo de aplicacion (Unal Med Botánica).
 * 4- Redactar carta al director del proyecto (Gabriel Awad) para conseguir el aval de él y su firma.
 * 5- Diligenciar el formulario por mediante el cual solicitaremos permiso a la sede de ingreso a la Universidad.
 * 6- Organizar el README.md para que quede con logo e información del proyecto y que el público en general se interese más al verlo.
@@ -10,7 +10,7 @@
 * 9- Crear la base de datos en donde se almacenarán el registro de usuarios (creación de cuentas y contraseñas) además de establecer el inicio y la interfaz de la plataforma.
 * 10- Crear la base de datos que utilizaremos para dar vida a las especies que utilizaremos en la plataforma.
 * 11- Guardar información de usuarios que están registrados, además al ser un sitio web poder implementar cookies para así elegir información que le pueda interesar al usuario sin necesidad de recibir notificaciones molestas.
-* 12- Acceso a funcionalidades básicas de la aplicación sin registro (público en general)
+* 12- Acceso a funcionalidades básicas de la aplicación sin registro (público en general).
 * 13- Acceso a funcionalidades avanzadas de la aplicación con registro (usuarios registrados).
 * 14- Funcionalidades específicas según el tema del proyecto, como lo serían datos curiosos sobre especies que se podrán implementar en una base de datos subalterna a la principal en donde se encuentran dichas especies, además del mapa interactivo, en un futuro poder implementar asesorías y demás funciones relacionadas a la botánica en general.
 * 15- Ultimar detalles del trabajo de aplicación y posibles funcionalidades adicionales.
