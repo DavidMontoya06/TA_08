@@ -1,11 +1,4 @@
-# Actividades idas para el desarrollo del proyecto 
-* 1- Adquirir conocimientos para la creación del repositorio, GitHub, Replit y teams de replit.
-* 2- Solicitar información para llevar a cabo el permiso de ingreso a la Universidad con fines institucionales dirigidos al proyecto.
-* Establecer el cronograma y actividades junto con proyectos que realizaremos para llevar a cabo el trabajo de aplicacion (Unal Med Botánica)
-* Redactar carta al director del proyecto (Gabriel Awad) para conseguir el aval de él y su firma.
-* Diligenciar el formulario por mediante el cual pediremos permiso a la sede de ingreso a la Universidad.
-* 
-# Actividades para el desarrollo del proyecto
+# Actividades para el desarrollo del proyecto:
 * 1- Adquirir conocimientos para la creación del repositorio, GitHub, Replit y teams de replit.
 * 2- Solicitar información para llevar a cabo el permiso de ingreso a la Universidad con fines institucionales dirigidos al proyecto.
 * 3- Establecer el cronograma y actividades junto con proyectos que realizaremos para llevar a cabo el trabajo de aplicacion (Unal Med Botánica)
@@ -23,9 +16,7 @@
 * 15- Ultimar detalles del trabajo de aplicación 
 * 16- Preparar la exposición, exponer el trabajo y finalizando con la entrega del trabajo de aplicación completamente funcional.
 
-
-
-
+## Cronograma:
 * informe 03: 13 horas del viernes 16 de abril: Se realizarán las actividades 6 y 7
 * informe 04: 13 horas del viernes 23 de abril: Se realizará la actividad 8
 * informe 05: 13 horas del viernes 30 de abril: Se realizarán las actividades 9 y 10
