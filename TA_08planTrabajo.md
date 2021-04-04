@@ -13,7 +13,7 @@
 * 12- Acceso a funcionalidades básicas de la aplicación sin registro (público en general)
 * 13- Acceso a funcionalidades avanzadas de la aplicación con registro (usuarios registrados).
 * 14- Funcionalidades específicas según el tema del proyecto, como lo serían datos curiosos sobre especies que se podrán implementar en una base de datos subalterna a la principal en donde se encuentran dichas especies, además del mapa interactivo, en un futuro poder implementar asesorías y demás funciones relacionadas a la botánica en general.
-* 15- Ultimar detalles del trabajo de aplicación 
+* 15- Ultimar detalles del trabajo de aplicación y posibles funcionalidades adicionales.
 * 16- Preparar la exposición, exponer el trabajo y finalizando con la entrega del trabajo de aplicación completamente funcional.
 
 ## Cronograma:
