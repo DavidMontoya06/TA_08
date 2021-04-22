@@ -12,3 +12,4 @@ Entre sus principales caracteristicas es que es un software abierto al público,
 # Librerías disponibles.
 
 https://streamlit.io es una librería que hace costrucción de páginas web muy rápidas, es algo desechable pero si se sabe trabajar salen proyectos muy buenos.
+En el informe 03 nos dimos cuenta que nos quedaría mas como utilizar la libreria https://flask.palletsprojects.com/en/1.1.x/
