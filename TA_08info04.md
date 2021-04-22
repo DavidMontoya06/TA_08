@@ -20,3 +20,6 @@ realizamos una carpeta con lenguaje csss para aplicar los colores de fondo y let
   body: sepone toda la información de la entrada que se este indicando, allí se puede poner botones de entrada, codigos de color, datos informativos, etc. 
   h1:
   head: Es el encabezado se usa para marcar donde se va a iniciar y cuando  se termina de codificar. 
+
+## Modificaciones que tuvimos que hacer con respecto al cronograman
+* nos vimos obligados a replantear la actividad número 8 y posponerla porque la actual situación con la pandemia y el tercer pico en Medellín no dejó llevar a cabo los objetivos planteados.

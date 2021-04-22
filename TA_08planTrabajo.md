@@ -7,6 +7,7 @@
 * 6- Organizar el README.md para que quede con logo e información del proyecto y que el público en general se interese más al verlo.
 * 7- Realizar el informe sobre el publico objetivo y estrategias para llegar a dicho público, además de las estrategias para llevar a cabo el proyecto.
 * 8-Revisión de los permisos y agendar la salida a la Universidad para tomar datos e imágenes que nos servirán el desarrollo del proyecto.
+*8.1 Crear el boceto de la pagina en replit, realizar el diseño y botones que lleven a sus respectivas funciones de la aplicacióon, comit push y hacer evidenciar que todos los integrantes participaron.
 * 9- Crear la base de datos en donde se almacenarán el registro de usuarios (creación de cuentas y contraseñas) además de establecer el inicio y la interfaz de la plataforma.
 * 10- Crear la base de datos que utilizaremos para dar vida a las especies que utilizaremos en la plataforma.
 * 11- Guardar información de usuarios que están registrados, además al ser un sitio web poder implementar cookies para así elegir información que le pueda interesar al usuario sin necesidad de recibir notificaciones molestas.
@@ -18,9 +19,9 @@
 
 ## Cronograma:
 * informe 03: 13 horas del viernes 16 de abril: Se realizarán las actividades 6 y 7
-* informe 04: 13 horas del viernes 23 de abril: Se realizará la actividad 8
+* informe 04: 13 horas del viernes 23 de abril: Se realizará la actividad 8.1
 * informe 05: 13 horas del viernes 30 de abril: Se realizarán las actividades 9 y 10
-* informe 06: 13 horas del viernes 7 de mayo: Se realizará la actividad 11 
+* informe 06: 13 horas del viernes 7 de mayo: Se realizará la actividad 11 y tal vez la 8 
 * informe 07: 13 horas del viernes 14 de mayo: Se realizarán las actividades12 y 13
 * informe 08: 13 horas del viernes 21 de mayo: Se realizará la actividad 14
 * informe 09: 13 horas del viernes 28 de mayo: Se realizará la actividad 15
