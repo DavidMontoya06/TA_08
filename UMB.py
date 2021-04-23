@@ -13,11 +13,11 @@ def UMB():
 # crear otra ruta about/ aparte de la de inicio 
 @app.route('/about')
 #voy a manejar el usuario con la funcion about about"
-def abaut():
+def about():
 # Esta función me retornara algo al navegador, en este caso es solo un texto llamado "abaut page",  ahora importamos render template el archivo UMB.html  
   return render_template ('about.html')
 # Para que la aplicacion se mantenga escuchando siempre hacemos una validación para comprobar que estemos en el archivo principal para comprobar que es un archivo de ejecución y no un modulo 
 #Y a coontinuación voy a ejecutar por medio de la app su metodo run.
 if __name__ == '__main__':
-  app.run(debug=True)
-# utilizamos un debug=True (buliano) para dcirle que nuestra aplicacion esta en modo de prueba cada vez que escribamos un codigo se reinicia de forma automatica 
+  app.run(host='0.0.0.0', port=8080, debug=True)
+# utilizamos un debug=True  para dcirle que nuestra aplicacion esta en modo de prueba cada vez que escribamos un codigo se reinicia de forma automatica 
