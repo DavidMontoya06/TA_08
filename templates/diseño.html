@@ -1,29 +1,56 @@
+<!--utilizaremos esta carpeta de diseño para obtener el diseño (valga la redundancia) de toda la pagina web-->
+<!--Escribimos una estructura de html 5 escribiendo html:5-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unal Med Botánica</title>
-<!--bootstrap 4-->
+<!--Utilizamos bootstrap 4 para obtener estilos de css ya creados y no crearlos desde cero-->
+<!--Utilizamos ua dirección de internet o CDN para el CSS, para que lo obtenga a travez de internet y lo pegue en la aplicación-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <!--Customm CSS-->
+ 
+
+  <!--Customm css o css personalizado-->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
 </head>
 <body>
-
+    <!--Nuestra barra de navegación personalizada obtenida de bootstrap-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Unal Med Botánica</a>
+    <a class="navbar-brand" href="/">UMB</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <!--li son las pestañas que vamos a ver-->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">UMB</a>
+          <a class="nav-link active" aria-current="page" href="/">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('about') }}">About</a>
+          <a class="nav-link" href="{{ url_for('about') }}">¿Quiénes somos?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/proposito">Propósito</a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/mapa">Mapa</a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/mapa2">Mapa interactivo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/datos_curiosos">Datos Curiosos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/bibliografia">Bibliografía</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contacto">Contacto</a>
         </li>
       </ul>
     </div>

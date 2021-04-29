@@ -18,6 +18,32 @@ def about():
   return render_template ('about.html')
 # Para que la aplicacion se mantenga escuchando siempre hacemos una validación para comprobar que estemos en el archivo principal para comprobar que es un archivo de ejecución y no un modulo 
 #Y a coontinuación voy a ejecutar por medio de la app su metodo run.
+
+#Crearé otras rutas con los comandos ya conocidos
+@app.route('/proposito')
+def proposito():
+  return render_template ('proposito.html')
+
+@app.route('/mapa')
+def mapa():
+  return render_template ('mapa.html')
+
+@app.route('/mapa2')
+def mapa2():
+  return render_template ('mapa2.html')
+
+@app.route('/datos_curiosos')
+def datos_curiosos():
+  return render_template ('datos_curiosos.html')
+
+@app.route('/bibliografia')
+def bibliografia():
+  return render_template ('bibliografia.html')
+
+@app.route('/contacto')
+def contacto():
+  return render_template ('contacto.html')
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080, debug=True)
 # utilizamos un debug=True  para dcirle que nuestra aplicacion esta en modo de prueba cada vez que escribamos un codigo se reinicia de forma automatica 
