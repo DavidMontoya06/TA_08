@@ -10,4 +10,8 @@ Para alinear el texto usamos <CENTER> y lo direcciona al centro de la página.
 <TABLE> se usa para crear una tabla,<COL WIDTH=> se usa para definir el número de columnas WIDTH indica la anchura.
 </Tr> indica el comienzo y el final de una línea de la tabla. </tr>. <td>: indica el inicio y el final de los contenidos de una celda </td>.
 Es fundamental l código SRC= para ponr una imagen,El height marca la altura de la imagen, mientras que el width marca la anchura.
+
+
+### aprendizaje importante
+El día de hoy aprendimos a subir una imagen desde el computador al replit, simplemente al lado de add folder (agregar carpeta) hay tres puntos en vertical, desde ahí podeos subir los archivos
 		
