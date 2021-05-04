@@ -47,3 +47,6 @@ def contacto():
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080, debug=True)
 # utilizamos un debug=True  para dcirle que nuestra aplicacion esta en modo de prueba cada vez que escribamos un codigo se reinicia de forma automatica 
+
+
+#vamos a importar una base de datos desde SQLite 3 esa es la base de datos que va a tener todo lo que es cuentas y contraseñas de las personas que quieran acceder a las opciones avanzadas.
