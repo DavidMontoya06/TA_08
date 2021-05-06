@@ -50,3 +50,7 @@ if __name__ == '__main__':
 
 
 #vamos a importar una base de datos desde SQLite 3 esa es la base de datos que va a tener todo lo que es cuentas y contraseñas de las personas que quieran acceder a las opciones avanzadas.
+
+@app.route("/signup")
+def show_signup_form():
+    return render_template("signup_form.html")
