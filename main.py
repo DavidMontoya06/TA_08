@@ -1,5 +1,5 @@
 # de la biblioteca flask voy a importar flask, ahora importamos, ahora importamos otro metodo llamado render template  
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file, request, redirect, url_for
 
 # confirmo que estoy en el archivo principal y guardo lo que me envia flask en una variable que se llama app
 app = Flask(__name__)
@@ -44,13 +44,46 @@ def bibliografia():
 def contacto():
   return render_template ('contacto.html')
 
+#decorador con get y post para que muestre y capte información respectivamente hablando, en este caso nosostros con el post vamos a coger la información y almacenarla en una base de datos.
+# la forma de almacenarlos es nombrando una variable igual a request.form que es como un método que de dirigue al formulario que está en esa vista y capta esa información
+#cargo una lista nueva para ingresar toda la información
+@app.route("/signup/", methods=["GET", "POST"])
+def show_signup_form():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
+
+    return render_template("signup_form.html")
+#importar la libreria sqlite3
+import sqlite3
+
+#Conexión de la base de datos con un archivo de texto
+con = sqlite3.connect('database.db')
+
+#ahora vamos a conectar un cursor que puede funcionar con código corrido, y nos permite trabajar con la tabla.
+c = con.cursor 
+
+#A continuación creamos la base de datos donde se va almacenar los datos de usurios, junto a los códigos que permitan crear tablas. 
+def create_usertable():
+  c.execute('CREATE TABLE IF NOT EXIST users(name TEXT NOT NULL,username TEXT, password TEXT)')
+  con.commit() 
+
+#luego tenemos la función sihnub con la cual nos vamos a registrar en la base de datos, con el cursor, con execute y dentro de el tendremos los dos parámtros que serán el nombre de usuario y contraseña, un comando en forma de strip y otro con la ruta 
+def signub_user(username, password): 
+  c.execute('INSERT INTO users(username,password)VALUES (?,?)', (username, password))
+  con.commit()
+
+# Estos comandos nos permite definir la validación de usuarios,para que apartir del nombre de usuario buscar la entrada correspondiente a la base de datos.
+def login_user(username, password): 
+  c.execute('SELECT * FROM users=?'(username,))
+  data= c.fetchone() #de todas las entradas de la base de datos vamos a escoger la última.
+  return data[-1]==password 
+
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080, debug=True)
 # utilizamos un debug=True  para dcirle que nuestra aplicacion esta en modo de prueba cada vez que escribamos un codigo se reinicia de forma automatica 
 
 
 #vamos a importar una base de datos desde SQLite 3 esa es la base de datos que va a tener todo lo que es cuentas y contraseñas de las personas que quieran acceder a las opciones avanzadas.
-
-@app.route("/signup")
-def show_signup_form():
-    return render_template("signup_form.html")

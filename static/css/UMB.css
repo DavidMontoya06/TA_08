@@ -1,0 +1,4 @@
+body {
+ background-image: url("{{ url_for('static', filename='imagenes/agora.jpg') }}");
+ background-color: #ffffff;
+}
