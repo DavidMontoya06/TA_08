@@ -1,4 +1,3 @@
-
 /*le ponemos la fuente y el color de fondo*/
 body { 
   font-family: 'Roboto', sans-serif;
@@ -17,7 +16,7 @@ background: linear-gradient(to right, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, F
 .cookies-box{
   position: fixed;
   bottom: 0;
-  background: #9924C5;
+  background: #D3959B;
   width: 100%;
   
 }
