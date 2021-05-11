@@ -45,41 +45,69 @@ def contacto():
   return render_template ('contacto.html')
 
 #decorador con get y post para que muestre y capte información respectivamente hablando, en este caso nosostros con el post vamos a coger la información y almacenarla en una base de datos.
-# la forma de almacenarlos es nombrando una variable igual a request.form que es como un método que de dirigue al formulario que está en esa vista y capta esa información
-#cargo una lista nueva para ingresar toda la información
-@app.route("/signup/", methods=["GET", "POST"])
-def show_signup_form():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
 
-    return render_template("signup_form.html")
 #importar la libreria sqlite3
 import sqlite3
 
-#Conexión de la base de datos con un archivo de texto
-con = sqlite3.connect('database.db')
+# la forma de almacenarlos es nombrando una variable igual a request.form que es como un método que de dirigue al formulario que está en esa vista y capta esa información
+#cargo una lista nueva para ingresar toda la información
+@app.route("/signup", methods=["GET", "POST"])
+def show_signup_form():
+    if request.method == 'POST':
+      #Conexión de la base de datos con un archivo de texto
+        con = sqlite3.connect('database.db')
+        #ahora vamos a conectar un cursor que va a trabajar no con codigo corrido si no focalizado, y nos permite trabajar con la tabla, creamos tablas, consultar valores en las tablar, menajr los valores de las tablas, etc.
+        c = con.cursor
+        name = request.form.get['name']
+        surname = request.form.get['surname']
+        email = request.form.get['email']
+        password = request.form.get['password']
+        #verificaos que no exista una persona con el mismo correo.
+        #SELECT FROM es para consultar datos
+        data = c.execute('SELECT = fROM users WHERE email = ?', (email,))
+        c.close()
+        if data:
+          return redirect(url_for('signup'))
+        else:
+          #donde no exista (else) creo el cursor y la lista que voy a ingresar
+          c = con.cursor
+          #A continuación creamos la base de datos donde se va almacenar los datos de usurios, junto a los códigos que permitan crear tablas. 
+          #INSERT INTO es para guardar datos
+          c.execute('INSERT INTO users (name, surname, email, password) VALUES (?,?,?,?)', (name, surname, email, password))
+          #con el con commit lo que hago es mandar eso realmente a la base
+          con.commit()
+          c.close()
+          #con este último return redirect me quiere decir que cuando yo lo termine él me enviará auna página y otra.
+          return redirect(url_for('UMB'))
 
-#ahora vamos a conectar un cursor que puede funcionar con código corrido, y nos permite trabajar con la tabla.
-c = con.cursor 
+    return render_template("signup_form.html")
 
-#A continuación creamos la base de datos donde se va almacenar los datos de usurios, junto a los códigos que permitan crear tablas. 
-def create_usertable():
-  c.execute('CREATE TABLE IF NOT EXIST users(name TEXT NOT NULL,username TEXT, password TEXT)')
-  con.commit() 
+#Cuando tenemos ya la tabla construida pasamos a la parte del login o acceso y es el mismo proceso.
 
-#luego tenemos la función sihnub con la cual nos vamos a registrar en la base de datos, con el cursor, con execute y dentro de el tendremos los dos parámtros que serán el nombre de usuario y contraseña, un comando en forma de strip y otro con la ruta 
-def signub_user(username, password): 
-  c.execute('INSERT INTO users(username,password)VALUES (?,?)', (username, password))
-  con.commit()
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+      #Conexión de la base de datos con un archivo de texto
+        con = sqlite3.connect('database.db')
+        #Vamos a crear el cursor.
+        c = con.cursor
+        #capto los datos que quiero utilizar.
+        email = request.form.get['email']
+        password = request.form.get['password']
+        c.execute('SELECT = fROM users WHERE email = ?', (email,))
+        passw = c.fetchone() [-1] #capto un sólo valor.
+        c.close()
+        if passw==password:
+          return redirect(url_for('mapa2'))
+        else:
+          return redirect(url_for('login'))
 
-# Estos comandos nos permite definir la validación de usuarios,para que apartir del nombre de usuario buscar la entrada correspondiente a la base de datos.
-def login_user(username, password): 
-  c.execute('SELECT * FROM users=?'(username,))
-  data= c.fetchone() #de todas las entradas de la base de datos vamos a escoger la última.
-  return data[-1]==password 
+    return render_template("login.html")
 
+#así mismo vamos a crear una funcion para cerrrar sesión.
+@app.route('/log_out')
+def log_out():
+  return render_template ('log_out.html')
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080, debug=True)

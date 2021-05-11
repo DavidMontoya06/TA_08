@@ -7,4 +7,4 @@ Para procesar posteriormente los campos del formulario, indicamos el nombre con 
 
 
 ## Vista de la pagina web desde un móvil
-Para solucionar el rpoblema de la pagina web vista desde un dispositivo móvil nos fuimos a la pagina ionicons, buscamos un incono deseado para el menú (<ion-icon name="menu-outline"></ion-icon>), luego en la pagina de diseño.html en la parte de span con "navbar-toggler-icon" lo borramos y pegamos este <ion-icon name="menu-outline"></ion-icon>
+Para solucionar el rpoblema de la pagina web vista desde un dispositivo móvil nos fuimos a la pagina ionicons, buscamos un incono deseado para el menú (<ion-icon name="menu-outline"></ion-icon>), luego en la pagina de diseño.html en la parte de span con "navbar-toggler-icon" lo borramos y pegamos este <ion-icon name="menu-outline"></ion-icon>, pero luego de intentar hacerlo pues no funcinó porque teniamos a python de por medio.

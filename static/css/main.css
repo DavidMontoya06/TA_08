@@ -1,3 +1,4 @@
+
 /*le ponemos la fuente y el color de fondo*/
 body { 
   font-family: 'Roboto', sans-serif;
@@ -5,4 +6,18 @@ body {
   background: #D3959B;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #BFE6BA, #D3959B);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/*Con estos códigos indicamos en qué ubicación y qué colores le quedemos dar a la caja de información de cookies*/
+
+*{  
+   padding: 0;
+    margin: 0;
+}
+.cookies-box{
+  position: fixed;
+  bottom: 0;
+  background: #9924C5;
+  width: 100%;
+  
 }
