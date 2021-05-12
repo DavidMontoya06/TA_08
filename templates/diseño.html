@@ -16,69 +16,69 @@
 
 </head>
 <body>
-    <!--Nuestra barra de navegación personalizada obtenida de bootstrap-->
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='imagenes/logo_recortado2.png') }}" class="logo-brand" alt="logo" style="width:90px;height:90px"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <!--Nuestra barra de navegación personalizada obtenida de bootstrap-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='imagenes/logo_recortado2.png') }}" class="logo-brand" alt="logo" style="width:90px;height:90px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <!--li son las pestañas que vamos a ver-->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('about') }}">¿Quiénes somos?</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/proposito">Propósito</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/mapa">Mapa</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/mapa2">Mapa interactivo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/datos_curiosos">Datos Curiosos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/bibliografia">Bibliografía</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contacto">Contacto</a>
-        </li>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/signup">Registrarse</a>
-        </li>
-      </ul>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <!--li son las pestañas que vamos a ver-->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">¿Quiénes somos?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/proposito">Propósito</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mapa">Mapa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mapa2">Mapa interactivo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/datos_curiosos">Datos Curiosos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bibliografia">Bibliografía</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contacto">Contacto</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Registrarse</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mensaje cookies</title>
- <link rel="stylesheet" href="./main.css">
-</head>
-<body>
+  </nav>
+  <!--Creamos el contenedor que va contener el ancho del mensaje-->
   <div class="cookies-box">
+    <!--Creamos el contenedor que contiene valga la redundancia los párrafos y los botones, dentro del parrafo creamos el enlace que nos servirá para conocer las políticas-->
     <div class="conteiner-cookies">
       <div class="parrafo">
-        <p>Este sitio web maneja cookies, si permanece aquí acepta su uso. Puede leer más sobre el uso de cookies en nuestra <a href="">Política de cookies</a></p>
+        <p>Este sitio web maneja cookies, si permanece aquí acepta su uso. Puede leer más sobre el uso de cookies en nuestra <a href="{{ url_for('static', filename='imagenes/políticadecookiesUMB.pdf') }}">Política de cookies</a></p>
       </div>
+      <!--creamos y ponemos los botes de aceptar y cerrar, ademas de darle sus id para utilizarlos en las funciones de los botones-->
       <div class="botones">
-          <button>Aceptar</button>
+          <button id="acep">Aceptar</button>
           <button id="close">Cerrar</button>
       </div>
     </div>
   </div>
-</body>
 
+
+<!-- En javascrip las class se llaman con un punto y los id con un #, llamamos a java script para que funcione la cookies sus componentes-->
+<script src="{{ url_for('script') }}"></script>
+
+
+<!--contenido centrado con un pading de 4-->
 <!--block en container p-4"-->
  <div class='container'>
    {% block content %}

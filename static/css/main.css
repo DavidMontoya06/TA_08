@@ -9,14 +9,32 @@ background: linear-gradient(to right, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, F
 
 /*Con estos códigos indicamos en qué ubicación y qué colores le quedemos dar a la caja de información de cookies*/
 
+/*para quitar los padding y las margenes que nos da por ende el navegador*/
 *{  
    padding: 0;
     margin: 0;
 }
+/*Centramos las cookies, las ponesmos abajo, centramos el texto y en conclusión le damos forma al contenido*/
 .cookies-box{
   position: fixed;
   bottom: 0;
   background: #D3959B;
   width: 100%;
-  
+  display: flex;
+  justify-content: center;
 }
+
+/* Vamos a darle color y forma a los botones de aceptar y cancelar de las cookies */
+
+.cookies-box  .conteiner-cookies button {
+  background: transparent;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 5px 10px;
+  border-radius: 30px; 
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px; 
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+  

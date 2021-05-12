@@ -1,4 +1,4 @@
-# de la biblioteca flask voy a importar flask, ahora importamos, ahora importamos otro metodo llamado render template  
+# de la biblioteca flask voy a importar flask, ahora importamos, ahora importamos otro metodo llamado render template, ademas agregamos otros métodos  
 from flask import Flask, render_template, send_file, request, redirect, url_for
 
 # confirmo que estoy en el archivo principal y guardo lo que me envia flask en una variable que se llama app
@@ -108,6 +108,12 @@ def login():
 @app.route('/log_out')
 def log_out():
   return render_template ('log_out.html')
+
+#creamos una ruta para el script
+@app.route('/script')
+def script():
+  return render_template ('script.js')
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080, debug=True)
