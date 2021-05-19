@@ -3,5 +3,15 @@
 {% extends "diseño.html" %}
 
 {% block content %}
+
+<a class="btn btn-outline-success" href="{{ url_for('funciones_avanzadas') }}" role="button">funciones avanzadas</a>
+
 <h1>mapa interactivo a editar</h1>
+
+<div align="center"><iframe src="https://www.google.com/maps/d/u/1/embed?mid=1nzAZ4aYo8hE7Er_w9Ns_T1MSjG2nkrvc" width="900" height="600">
+</iframe>
+</div>
+
+
+
 {% endblock %}

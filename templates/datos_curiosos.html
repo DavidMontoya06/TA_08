@@ -3,6 +3,47 @@
 {% extends "diseño.html" %}
 
 {% block content %}
+
+<a class="btn btn-outline-success" href="{{ url_for('funciones_avanzadas') }}" role="button">funciones avanzadas</a>
+
+
+<!--id, image, especie, dato1, dato2 y dato3-->
+
+<form action="" method="POST">
+  <div class="mb-3">
+    <label for="enumerado" class="form-label">Numero de especie</label>
+    <input type="text" class="form-control" id="enumerado" name="enumerado" aria-describedby="enumeradoAyuda">
+  </div>
+  <div class="mb-3">
+  <label for="formFile" class="form-label">Insertar imagen de la especie</label>
+  <input class="form-control" type="file" id="formFile" name="image">
+  </div>
+  <div class="mb-3">
+    <label for="especie" class="form-label">Especie</label>
+    <input type="text" class="form-control" id="especie" name="especie" aria-describedby="especieAyuda">
+  </div>
+  <div class="mb-3">
+    <label for="dato1" class="form-label">Dato 1</label>
+    <input type="text" class="form-control" id="dato1" name="dato1" aria-describedby="dato1Help">
+  </div>
+  <div class="mb-3">
+    <label for="dato2" class="form-label">Dato 2</label>
+    <input type="text" class="form-control" id="dato2" name="dato2" aria-describedby="dato2Help">
+  </div>
+  <div class="mb-3">
+    <label for="dato1" class="form-label">Dato 3</label>
+    <input type="text" class="form-control" id="dato3" name="dato3" aria-describedby="dato3Help">
+  </div>
+    <input type="submit" id="send-signup" name="signup" value="Ingresar" />
+</form>    
+
+
+
+
+
+
+
+
 <h1>Datos curiosos a editar</h1>
 </P>
 <CENTER>
@@ -12,14 +53,42 @@
 		<TR VALIGN=TOP>
 			<TD WIDTH=279 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
 				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#538135"><FONT SIZE=4><B>Flora.</B></FONT></FONT></P>
-				<P STYLE="margin-bottom: 0in"><FONT SIZE=4>Aquí encontrarás coriosidades de algunas de las especies que encuentras en la Sede Medellín de la universidad. 
+<div class="clearfix">
+  <img src="{{ url_for('static', filename='imagenes/volador_rio.png') }}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="...">
+
+  <p>
+    A paragraph of placeholder text. We're using it here to show the use of the clearfix class. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.
+  </p>
+
+  <p>
+    As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+  </p>
+
+  <p>
+    And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
+  </p>
+</div> 
           
 				</FONT></P>
 				<P ALIGN=CENTER><BR>
 				</P>
 			</TD>
 
+<div class="clearfix">
+  <img src="{{ url_for('static', filename='imagenes/volador_rio.png') }}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="...">
 
+  <p>
+    A paragraph of placeholder text. We're using it here to show the use of the clearfix class. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.
+  </p>
+
+  <p>
+    As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+  </p>
+
+  <p>
+    And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
+  </p>
+</div>
 
 
 

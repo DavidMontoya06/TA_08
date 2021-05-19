@@ -24,6 +24,9 @@ try:
   #con execute ejecuto el comando que le estoy planteando, en este caso crear la tabla.
 
   c.execute('CREATE TABLE IF NOT EXISTS users(name TEXT NOT NULL, surname TEXT, email TEXT NOT NULL, password TEXT NOT NULL)')
+
+  c.execute('CREATE TABLE IF NOT EXISTS datos1(enumerado TEXT NOT NULL, image BLOB, especie TEXT, dato1 TEXT, dato2 TEXT, dato3 TEXT)')
+
   
   #con el con.comit lo que hago es realmente es guardar estos cambios y permitir que los datos queden aquí cuando hacen post
 
@@ -74,9 +77,53 @@ def mapa():
 def mapa2():
   return render_template ('mapa2.html')
 
-@app.route('/datos_curiosos')
+@app.route('/datos_curiosos', methods=('GET', 'POST'))
 def datos_curiosos():
+
+  if request.method == 'POST':
+
+    con = sqlite3.connect('database.db')
+
+    c = con.cursor()
+
+    enumerado = request.form.get('enumerado')
+    image = request.form.get('image')
+    especie = request.form.get('especie')
+    dato1 = request.form.get('dato1')
+    dato2 = request.form.get('dato2')
+    dato3 = request.form.get('dato3')
+
+    data = c.execute('SELECT * fROM datos1 WHERE especie = ?', (especie,))
+
+    c.close()
+
+    if data==especie:
+
+      return redirect(url_for('datos_curiosos'))
+    
+    else:
+
+      c = con.cursor()
+
+      c.execute('INSERT INTO datos1(enumerado, image, especie, dato1, dato2, dato3) VALUES (?,?,?,?,?,?)', (enumerado, image, especie, dato1, dato2, dato3))
+
+      con.commit()
+
+      c.close()
+
+      return redirect(url_for('funciones_avanzadas'))
+
+
   return render_template ('datos_curiosos.html')
+
+
+
+
+
+
+@app.route('/tipo_especie')
+def tipo_especie():
+  return render_template ('tipo_especie.html')
 
 @app.route('/bibliografia')
 def bibliografia():
