@@ -25,7 +25,7 @@ try:
 
   c.execute('CREATE TABLE IF NOT EXISTS users(name TEXT NOT NULL, surname TEXT, email TEXT NOT NULL, password TEXT NOT NULL)')
 
-  c.execute('CREATE TABLE IF NOT EXISTS datos1(enumerado TEXT NOT NULL, image BLOB, especie TEXT, dato1 TEXT, dato2 TEXT, dato3 TEXT)')
+  c.execute('CREATE TABLE IF NOT EXISTS datos1(enumerado TEXT NOT NULL, especie TEXT NOT NULL, dato1 TEXT, dato2 TEXT, dato3 TEXT, image BLOB NOT NULL)')
 
   
   #con el con.comit lo que hago es realmente es guardar estos cambios y permitir que los datos queden aquí cuando hacen post
@@ -87,11 +87,11 @@ def datos_curiosos():
     c = con.cursor()
 
     enumerado = request.form.get('enumerado')
-    image = request.form.get('image')
     especie = request.form.get('especie')
     dato1 = request.form.get('dato1')
     dato2 = request.form.get('dato2')
     dato3 = request.form.get('dato3')
+    image = request.form.get('image')
 
     data = c.execute('SELECT * fROM datos1 WHERE especie = ?', (especie,))
 
@@ -105,7 +105,9 @@ def datos_curiosos():
 
       c = con.cursor()
 
-      c.execute('INSERT INTO datos1(enumerado, image, especie, dato1, dato2, dato3) VALUES (?,?,?,?,?,?)', (enumerado, image, especie, dato1, dato2, dato3))
+
+      c.execute('INSERT INTO datos1(enumerado, especie, dato1, dato2, dato3, image) VALUES (?,?,?,?,?,?)', (enumerado, especie, dato1, dato2, dato3, image))
+
 
       con.commit()
 
