@@ -25,7 +25,7 @@ try:
 
   c.execute('CREATE TABLE IF NOT EXISTS users(name TEXT NOT NULL, surname TEXT, email TEXT NOT NULL, password TEXT NOT NULL)')
 
-  c.execute('CREATE TABLE IF NOT EXISTS datos1(enumerado TEXT NOT NULL, especie TEXT NOT NULL, dato1 TEXT, dato2 TEXT, dato3 TEXT, image BLOB NOT NULL)')
+  c.execute('CREATE TABLE IF NOT EXISTS curiosidades(enumerado TEXT NOT NULL, especie TEXT NOT NULL, dato1 TEXT, dato2 TEXT, dato3 TEXT, image BLOB NOT NULL)')
 
   
   #con el con.comit lo que hago es realmente es guardar estos cambios y permitir que los datos queden aquí cuando hacen post
@@ -93,7 +93,9 @@ def datos_curiosos():
     dato3 = request.form.get('dato3')
     image = request.form.get('image')
 
-    data = c.execute('SELECT * fROM datos1 WHERE especie = ?', (especie,))
+    #corregir y comentar de buena manera el data
+
+    data = c.execute('SELECT * fROM curiosidades WHERE especie = ?', (especie,))
 
     c.close()
 
@@ -105,8 +107,33 @@ def datos_curiosos():
 
       c = con.cursor()
 
+      #Creamos la funcion convertir_a_binario como una función auxiliar, tendriamos dentro de ella la image
 
-      c.execute('INSERT INTO datos1(enumerado, especie, dato1, dato2, dato3, image) VALUES (?,?,?,?,?,?)', (enumerado, especie, dato1, dato2, dato3, image))
+      def convertir_a_binario(image):
+
+        #realizamos la apertura invocando open (abrir) sobre el manejador de contexto (with), luego ahí estaría la ruta de la image e indicamos que va a hacer de modo de trabajo lectura en modo binario (rb) y llamamos a una variable f como el manejador del archivo.
+
+        with open(image, 'rb') as f:
+
+          #leemos los datos del archivo blob con la función efe y la acción leer (read)
+          blob = f.read()
+
+        #por ultimo retornamos el contenido de blob y ese contenido quedará en la variable image_binario
+        return blob
+        
+        #tambien debo crear la función que lleve de binario a imagen
+
+        #necesitamos obtener la versión en binario de la foto que vamos a insertar, entonces escribimos foto_binario como nombre de variable e invocamos una funcion que llamamos convertir_a_binario y pasamos como argumento el archivo que se va a convertir es una dupla con 6 elementos el último elemento, el que está en el índice -1 es la image, vamos a crear la función convertir_a_binario como una funcioón auxiliar
+
+        image_binario = convertir_a_binario(curiosidades[-1])
+
+        #recreamos la dupla "curiosidades" de la siguiente manera: llamamos todos sus índices y el último es donde tendriamos la imagen en binario antes de la orden de inser into
+
+        curiosidades = (curiosidades[0], curiosidades[1], curiosidades[2], curiosidades[3], curiosidades[4], curiosidades[5], image_binario)
+
+
+
+      c.execute('INSERT INTO curiosidades(enumerado, especie, dato1, dato2, dato3, image) VALUES (?,?,?,?,?,?)', (enumerado, especie, dato1, dato2, dato3, image))
 
 
       con.commit()
