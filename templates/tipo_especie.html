@@ -6,22 +6,32 @@
 
 {% block content %}
 
+<!--Creamos la tabla por medio de la etiqueta table, y pues ella va atomar forma con la calse (class="table") con la que bootstrap le va a dar forma porque son diseños peescogidos de bootstrap para complicarnos menos la vida-->
+
 <table class="table">
+
+  <!--Creamos el elemento "thead" que nos permitira contener el bloque de filas y así por medio del método "th" (columnas) hacer en encabezado-->
   <thead>
+    <!--con este comando "tr" vamos a crear cada una de las filas-->
     <tr>
+      <!--Como habiamos comentado anteriormente con el th hacemos el encabezado, con "scope" especificamos si es columna o fila y por ultimo comentamos-->
       <th scope="col">#</th>
       <th scope="col">Arboretum</th>
       <th scope="col">Palmetum</th>
       <th scope="col">Otras plantas</th>
     </tr>
   </thead>
+  <!--Con "tbody" haremos cada bloque de filas y lo utilizaremos mas que todo para especificar la información de las filas.-->
   <tbody>
     <tr>
+      <!--En este caso especificamos que el encabezado heco por medio del código "th" va a ser el de una fila para que así le demos orden al cuadro-->
       <th scope="row">1</th>
+      <!--con el código "td" vamos a ingresar los valores de las filas hechas con "tr" en su respectiva columna "td"-->
       <td>Araucaria excelsa</td>
       <td>Phoenix reclinata</td>
       <td>Ravenala madagascariensis</td>
     </tr>
+    <!--como el código a partir de aquí se repite no lo comentaré porque va a ser la repetición de la repetidera.-->
     <tr>
       <th scope="row">2</th>
       <td>Sapindus saponaria</td>

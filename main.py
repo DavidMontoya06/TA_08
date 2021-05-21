@@ -27,6 +27,8 @@ try:
 
   c.execute('CREATE TABLE IF NOT EXISTS curiosidades(enumerado TEXT NOT NULL, especie TEXT NOT NULL, dato1 TEXT, dato2 TEXT, dato3 TEXT, image BLOB NOT NULL)')
 
+  c.execute('CREATE TABLE IF NOT EXISTS comentarios(nombre TEXT NOT NULL, email TEXT, comentario TEXT NOT NULL)')
+
   
   #con el con.comit lo que hago es realmente es guardar estos cambios y permitir que los datos queden aquí cuando hacen post
 
@@ -158,9 +160,39 @@ def tipo_especie():
 def bibliografia():
   return render_template ('bibliografia.html')
 
-@app.route('/contacto')
+@app.route('/contacto', methods=('GET', 'POST'))
 def contacto():
+  if request.method == 'POST':
+
+    con = sqlite3.connect('database.db')
+
+    c = con.cursor()
+
+    nombre = request.form.get('nombre')
+    email = request.form.get('email')
+    comentario = request.form.get('comentario')
+
+    c.execute('INSERT INTO comentarios(nombre, email, comentario) VALUES (?,?,?)', (nombre, email, comentario))
+
+    con.commit()
+
+    c.close()
+
+    return redirect(url_for('UMB'))
+
   return render_template ('contacto.html')
+
+
+
+
+    
+
+  
+
+
+
+
+
 
 @app.route('/funciones_avanzadas')
 def funciones_avanzadas():
