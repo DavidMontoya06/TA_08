@@ -1,6 +1,10 @@
 # de la biblioteca flask voy a importar flask, ahora importamos, ahora importamos otro metodo llamado render template, ademas agregamos otros métodos  
 from flask import Flask, render_template, send_file, request, redirect, url_for
 
+#Importo desde la librería flas_email a Message, para poder así coge la información que recolecte en un html en particular y poder enviarla como un mensaje de email.
+
+#from flask_mail import Mail, Message
+
 #importamos la libreria para la base de datos al principio porque es una regla no escrita que s eve mal ponerla en medio. 
 import sqlite3
 
@@ -160,8 +164,16 @@ def tipo_especie():
 def bibliografia():
   return render_template ('bibliografia.html')
 
+#le digo a python qye voy a utilizar los dos métodos (get y post)
+
 @app.route('/contacto', methods=('GET', 'POST'))
+
+#Creo la función
+
 def contacto():
+
+  #Cuando el Usuario intente enviarme datos utilizo el método post en este caso.
+
   if request.method == 'POST':
 
     con = sqlite3.connect('database.db')
@@ -282,21 +294,30 @@ def login():
     con = sqlite3.connect('database.db')
     #Vamos a crear el cursor.
     c = con.cursor()
-    #capto los datos que quiero utilizar.
+    #capto los datos que quiero utilizar para la onsulta.
     email = request.form.get('email')
     password = request.form.get('password')
+    #utilizo el comando para obtener un email de la tabla seleccionandolo.
     c.execute('SELECT * fROM users WHERE email = ?', (email,))
 
-    #capto un sólo valor con fetchone.
+    #capto un sólo valor con fetchone, ya que es un sólo usuario el que está entrando y no varios.
 
-    passw = c.fetchone() [-1]
+    try:
 
-    #capto un sólo valor.
-    c.close()
-    if passw==password:
-      return redirect(url_for('funciones_avanzadas'))
-    else:
-      return redirect(url_for('login'))
+      passw = c.fetchone()[-1]
+
+      c.close()
+
+
+      if passw==password:
+        return redirect(url_for('funciones_avanzadas'))
+      else:
+        return redirect(url_for('login'))
+
+    except TypeError:
+
+      return redirect(url_for('signup'))
+    
 
   return render_template("login.html")
 
