@@ -16,12 +16,7 @@ import sqlite3
 # confirmo que estoy en el archivo principal y guardo lo que me envia flask en una variable que se llama app
 app = Flask(__name__)
 
-app.config['RECAPTCHA_SITE_KEY'] = '6LelIw4bAAAAAOjitRnsEU_ucY1Ped3LI-KoGHIZ' 
-
-app.config['RECAPTCHA_SECRET_KEY'] = '6LelIw4bAAAAAJHKKUeWX9Jp80F1YSIxzsW6O3vb' 
-
-# Cree un objeto ReCaptcha pasando 'aplicación' como parámetro
-recaptcha = ReCaptcha(app) 
+ 
 
 mail = Mail(app)
 
@@ -207,12 +202,7 @@ def contacto():
 
     msg.body = 'comentario'
 
-    mail.send(msg)
-
-    if recaptcha.verify():
-      message = '¡Gracias por completar el formulario!'
-    else:
-      message = 'Por favor complete el ReCaptcha!'
+    ###fdsfdf
 
     return redirect(url_for('UMB'))
 
