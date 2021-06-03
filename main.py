@@ -3,7 +3,11 @@ from flask import Flask, render_template, send_file, request, redirect, url_for
 
 #Importo desde la librería flas_email a Message, para poder así coge la información que recolecte en un html en particular y poder enviarla como un mensaje de email.
 
-#from flask_mail import Mail, Message
+from flask_mail import Mail, Message
+
+# Import ReCaptcha object
+
+from flask_recaptcha import ReCaptcha 
 
 #importamos la libreria para la base de datos al principio porque es una regla no escrita que s eve mal ponerla en medio. 
 import sqlite3
@@ -11,6 +15,23 @@ import sqlite3
 
 # confirmo que estoy en el archivo principal y guardo lo que me envia flask en una variable que se llama app
 app = Flask(__name__)
+
+app.config['RECAPTCHA_SITE_KEY'] = '6LelIw4bAAAAAOjitRnsEU_ucY1Ped3LI-KoGHIZ' 
+
+app.config['RECAPTCHA_SECRET_KEY'] = '6LelIw4bAAAAAJHKKUeWX9Jp80F1YSIxzsW6O3vb' 
+
+# Cree un objeto ReCaptcha pasando 'aplicación' como parámetro
+recaptcha = ReCaptcha(app) 
+
+mail = Mail(app)
+
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'HolaQueHaceYEN@gmail.com'
+app.config['MAIL_PASSWORD'] = 'YENzsj95'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 try:
   #Para crear la base de datos tenemos que tener una tabla que corresponde a dnde vamos a ingresar toda la información, eso lo hacemos con los siguientes códigos que esplicaré como utilizamos.
@@ -65,10 +86,10 @@ def UMB():
 @app.route('/about')
 #voy a manejar el usuario con la funcion about about"
 def about():
-# Esta función me retornara algo al navegador, en este caso es solo un texto llamado "abaut page", esto hace unas semanas, ahora me retorna la información de ¿quienes somos?  ahora importamos render template el archivo UMB.html  
+  # Esta función me retornara algo al navegador, en este caso es solo un texto llamado "abaut page", esto hace unas semanas, ahora me retorna la información de ¿quienes somos?  ahora importamos render template el archivo UMB.html  
   return render_template ('about.html')
-# Para que la aplicacion se mantenga escuchando siempre hacemos una validación para comprobar que estemos en el archivo principal para comprobar que es un archivo de ejecución y no un modulo 
-#Y a coontinuación voy a ejecutar por medio de la app su metodo run.
+  # Para que la aplicacion se mantenga escuchando siempre hacemos una validación para comprobar que estemos en el archivo principal para comprobar que es un archivo de ejecución y no un modulo 
+  #Y a coontinuación voy a ejecutar por medio de la app su metodo run.
 
 #Crearé otras rutas con los comandos ya conocidos
 @app.route('/proposito')
@@ -86,67 +107,69 @@ def mapa2():
 @app.route('/datos_curiosos', methods=('GET', 'POST'))
 def datos_curiosos():
 
-  if request.method == 'POST':
+  ##### los "##" son códigos que podríamos utilizar y complementar despues pero que en este caso según nuestra evaluación decidimos no utilizarlo po x o y razón y los "#" son comentarios comunes y corrientes de los códigos.
 
-    con = sqlite3.connect('database.db')
+  ##if request.method == 'POST':
 
-    c = con.cursor()
+    ##con = sqlite3.connect('database.db')
 
-    enumerado = request.form.get('enumerado')
-    especie = request.form.get('especie')
-    dato1 = request.form.get('dato1')
-    dato2 = request.form.get('dato2')
-    dato3 = request.form.get('dato3')
-    image = request.form.get('image')
+    ##c = con.cursor()
+
+    ##enumerado = request.form.get('enumerado')
+    ##especie = request.form.get('especie')
+    ##dato1 = request.form.get('dato1')
+    ##dato2 = request.form.get('dato2')
+    ##dato3 = request.form.get('dato3')
+    ##image = request.form.get('image')
 
     #corregir y comentar de buena manera el data
 
-    data = c.execute('SELECT * fROM curiosidades WHERE especie = ?', (especie,))
+    ##data = c.execute('SELECT * fROM curiosidades WHERE especie = ?', (especie,))
 
-    c.close()
+    ##c.close()
 
-    if data==especie:
+    ##if data==especie:
 
-      return redirect(url_for('datos_curiosos'))
+      ##return redirect(url_for('datos_curiosos'))
     
-    else:
+    ##else:
 
-      c = con.cursor()
+      ##c = con.cursor()
 
       #Creamos la funcion convertir_a_binario como una función auxiliar, tendriamos dentro de ella la image
 
-      def convertir_a_binario(image):
+      ##def convertir_a_binario(image):
 
         #realizamos la apertura invocando open (abrir) sobre el manejador de contexto (with), luego ahí estaría la ruta de la image e indicamos que va a hacer de modo de trabajo lectura en modo binario (rb) y llamamos a una variable f como el manejador del archivo.
 
-        with open(image, 'rb') as f:
+        ##with open(image, 'rb') as f:
 
           #leemos los datos del archivo blob con la función efe y la acción leer (read)
-          blob = f.read()
+          ##blob = f.read()
 
         #por ultimo retornamos el contenido de blob y ese contenido quedará en la variable image_binario
-        return blob
+        #return blob
         
         #tambien debo crear la función que lleve de binario a imagen
 
         #necesitamos obtener la versión en binario de la foto que vamos a insertar, entonces escribimos foto_binario como nombre de variable e invocamos una funcion que llamamos convertir_a_binario y pasamos como argumento el archivo que se va a convertir es una dupla con 6 elementos el último elemento, el que está en el índice -1 es la image, vamos a crear la función convertir_a_binario como una funcioón auxiliar
 
-        image_binario = convertir_a_binario(curiosidades[-1])
+        ##image_binario = convertir_a_binario(curiosidades[-1])
 
         #recreamos la dupla "curiosidades" de la siguiente manera: llamamos todos sus índices y el último es donde tendriamos la imagen en binario antes de la orden de inser into
 
-        curiosidades = (curiosidades[0], curiosidades[1], curiosidades[2], curiosidades[3], curiosidades[4], curiosidades[5], image_binario)
+        ##curiosidades = (curiosidades[0], curiosidades[1], curiosidades[2], curiosidades[3], curiosidades[4], curiosidades[5], image_binario)
 
 
 
-      c.execute('INSERT INTO curiosidades(enumerado, especie, dato1, dato2, dato3, image) VALUES (?,?,?,?,?,?)', (enumerado, especie, dato1, dato2, dato3, image))
+      ##c.execute('INSERT INTO curiosidades(enumerado, especie, dato1, dato2, dato3, image) VALUES (?,?,?,?,?,?)', (enumerado, especie, dato1, dato2, dato3, image))
 
 
-      con.commit()
+      ##con.commit()
 
-      c.close()
+      ##c.close()
 
-      return redirect(url_for('funciones_avanzadas'))
+      ##return redirect(url_for('funciones_avanzadas'))
 
 
   return render_template ('datos_curiosos.html')
@@ -176,19 +199,20 @@ def contacto():
 
   if request.method == 'POST':
 
-    con = sqlite3.connect('database.db')
-
-    c = con.cursor()
-
-    nombre = request.form.get('nombre')
+    name = request.form.get('name')
     email = request.form.get('email')
-    comentario = request.form.get('comentario')
+    password = request.form.get('comentario')
+   
+    msg = Message ('Comentario del proyecto UMB', sender = 'email', recipients = ['d.montoya.m.p@gmail.com'])
 
-    c.execute('INSERT INTO comentarios(nombre, email, comentario) VALUES (?,?,?)', (nombre, email, comentario))
+    msg.body = 'comentario'
 
-    con.commit()
+    mail.send(msg)
 
-    c.close()
+    if recaptcha.verify():
+      message = '¡Gracias por completar el formulario!'
+    else:
+      message = 'Por favor complete el ReCaptcha!'
 
     return redirect(url_for('UMB'))
 
