@@ -7,6 +7,8 @@
 
 {% block content %}
 
+<p>&nbsp;</p>
+
 <form action="" method="post">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email </label>
@@ -16,11 +18,7 @@
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Contraseña</label>
     <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Mirar contraseña</label>
-  </div>
-    <input type="submit" id="send-signup" name="signup" value="Ingresar" />
+  </div> 
+    <button type="submit" class="btn btn-primary">Ingresar</button>
 </form>    
 {% endblock %}
