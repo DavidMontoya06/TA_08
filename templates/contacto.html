@@ -22,29 +22,39 @@
 </UL>
 <P STYLE="margin-bottom: 0.11in"><FONT COLOR="#538135"><FONT SIZE=4>Email:</FONT></FONT></P>
 <UL>
-	<LI><P STYLE="margin-bottom: 0.11in"><FONT COLOR="#538135"><FONT SIZE=4>d.montoya.m.p@gmail.com</FONT></FONT></P>
-  <LI><P STYLE="margin-bottom: 0.11in"><FONT COLOR="#538135"><FONT SIZE=4>bermudezrubiojuana@gmail.com</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0.11in"><FONT COLOR="#538135"><FONT SIZE=4>elproyectoumb@gmail.com</FONT></FONT></P>
 </UL>
 
 <P STYLE="margin-bottom: 0.11in"><FONT COLOR="#538135"><FONT SIZE=5>Tambien si desea puede agregar sus dudas desde el siguiente formulario:</FONT></FONT></P>
 
 <div class="form-floating mb-3">
-  <input type="name" class="form-control" id="floatingInput" placeholder="name" name="nombre">
+  <input type="name" class="form-control" id="floatingInput" placeholder="name" name="contact_name">
   <label for="floatingInput">Nombre y apellido.</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="contact_email">
   <label for="floatingInput"> Agregue su email.</label>
 </div>
 <div class="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="comentario"></textarea>
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="contact_comentario"></textarea>
   <label for="floatingTextarea">Comentarios, sugerencias y/o reclamos.</label>
 </div>
 
 <p>&nbsp;</p>
 
 <button type="submit" class="btn btn-primary">Enviar comentario</button>
+
+
+
+<!--<form>-->
+  <!-- Consulte la variable 'recaptcha' en main.py -->
+  <!--{{ recaptcha }}--> 
+<!--</form>-->
       
-<p>&nbsp;</p>
+<!--<p>&nbsp;</p>-->
+
+
+<!-- Mensaje para decirle al usuario si ha completado o no ReCaptcha -->
+<!--<p>{{ message }}</p>-->
      
 {% endblock %}

@@ -1,3 +1,6 @@
+##### los "##" son códigos que podríamos utilizar y complementar despues pero que en este caso según nuestra evaluación decidimos no utilizarlo po x o y razón y los "#" son comentarios comunes y corrientes de los códigos.
+
+
 # de la biblioteca flask voy a importar flask, ahora importamos, ahora importamos otro metodo llamado render template, ademas agregamos otros métodos  
 from flask import Flask, render_template, send_file, request, redirect, url_for
 
@@ -7,7 +10,7 @@ from flask_mail import Mail, Message
 
 # Import ReCaptcha object
 
-from flask_recaptcha import ReCaptcha 
+##from flask_recaptcha import ReCaptcha 
 
 #importamos la libreria para la base de datos al principio porque es una regla no escrita que s eve mal ponerla en medio. 
 import sqlite3
@@ -18,15 +21,32 @@ app = Flask(__name__)
 
  
 
-mail = Mail(app)
 
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'HolaQueHaceYEN@gmail.com'
-app.config['MAIL_PASSWORD'] = 'YENzsj95'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-mail = Mail(app)
+#SMTP nos permite enviar correos, en este caso utilizaremos la configuración de GMAIL
+app.config['MAIL_SERVER']="smtp.gmail.com"
+#En este caso utilizaremos la configuración 587 de SMTP que sirve para enviar mail´s.
+app.config['MAIL_PORT'] = 587
+#Nombre de usuario del servidor smtp en este caso nuetra cuenta de gmail para el trabajo. 
+app.config['MAIL_USERNAME'] = mail_username="elproyectoumb@gmail.com"
+# Contraseña de usuario del servidor SMTP
+app.config['MAIL_PASSWORD'] = mail_password="hola123@"
+# El protocolo TLS es para el encriptado de datos servidor-usuario, de acuerdo al protocolo es asignado el númeor del puerto, en este caso no se utiliza SSL porque es conveniente en otro tipo de mail_-port.
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+# Se crea un default sender, para que todos los correos salgan del mismo correo,
+app.config['MAIL_DEFAULT_SENDER'] = "elproyectoumb@gmail.com"
+#por ultimo se define la variable mail, la cual se usa una vez definida la ruta
+mail=Mail(app)
+
+#obtengo codigos de google recaptcha para así poder manejar el recaptcha
+
+##app.config['RECAPTCHA_SITE_KEY'] = '6LdxlxAbAAAAAKnLLyxLYJcGBgLHzGcXVhhpsV7q' 
+
+##app.config['RECAPTCHA_SECRET_KEY'] = '6LdxlxAbAAAAAKA8AD3yjZteKdpEksuBUx-CxoDx' 
+
+#Cree un objeto ReCaptcha pasando 'aplicación' como parámetro
+
+##recaptcha = ReCaptcha(app) 
 
 try:
   #Para crear la base de datos tenemos que tener una tabla que corresponde a dnde vamos a ingresar toda la información, eso lo hacemos con los siguientes códigos que esplicaré como utilizamos.
@@ -47,7 +67,7 @@ try:
 
   c.execute('CREATE TABLE IF NOT EXISTS curiosidades(enumerado TEXT NOT NULL, especie TEXT NOT NULL, dato1 TEXT, dato2 TEXT, dato3 TEXT, image BLOB NOT NULL)')
 
-  c.execute('CREATE TABLE IF NOT EXISTS comentarios(nombre TEXT NOT NULL, email TEXT, comentario TEXT NOT NULL)')
+  ##c.execute('CREATE TABLE IF NOT EXISTS comentarios(nombre TEXT NOT NULL, email TEXT, comentario TEXT NOT NULL)')
 
   
   #con el con.comit lo que hago es realmente es guardar estos cambios y permitir que los datos queden aquí cuando hacen post
@@ -101,8 +121,6 @@ def mapa2():
 
 @app.route('/datos_curiosos', methods=('GET', 'POST'))
 def datos_curiosos():
-
-  ##### los "##" son códigos que podríamos utilizar y complementar despues pero que en este caso según nuestra evaluación decidimos no utilizarlo po x o y razón y los "#" son comentarios comunes y corrientes de los códigos.
 
   ##if request.method == 'POST':
 
@@ -194,27 +212,41 @@ def contacto():
 
   if request.method == 'POST':
 
-    name = request.form.get('name')
-    email = request.form.get('email')
-    password = request.form.get('comentario')
+    #pongo las variables de los datos que quiero obtener
+
+    contact_name = request.form.get("contact_name")
+    contact_email = request.form.get("contact_email")
+    contact_comentario = request.form.get("contact_comentario")
+
+    #Se crea la instancia del "Message" que es el cuerpo como tal que meteremos a gmail, en nuestro caso irá con nombre, comentario y obviamente el correo que será enviado.
    
-    msg = Message ('Comentario del proyecto UMB', sender = 'email', recipients = ['d.montoya.m.p@gmail.com'])
+    msg = Message(subject=f"Mail from {contact_name}", body=f"Name: {contact_name}\nE-Mail: {contact_email}\n\n\n\n{contact_comentario}", sender=mail_username, recipients=['elproyectoumb@gmail.com'])
 
-    msg.body = 'comentario'
+    # Use el método verify () para ver si ReCaptcha está completo
+    ##if recaptcha.verify():
+      # Enviar mensaje de éxito
+      ##message = '¡Gracias por completar el formulario!'
+    ##else:
+      # Enviar mensaje de error
+      ##message = 'Por favor complete el ReCaptcha!'
 
-    ###fdsfdf
 
-    return redirect(url_for('UMB'))
+    #Se llama la variable "mail" y se envia con los comentarios aplicados en la variable "msg"
+
+    mail.send(msg)
+    
+    # Use el método verify () para ver si ReCaptcha está completo
+    ##if recaptcha.verify():
+      # Enviar mensaje de éxito
+      ##message = '¡Gracias por completar el formulario!'
+    ##else:
+      # Enviar mensaje de error
+      ##message = 'Por favor complete el ReCaptcha!'
+
+    return render_template ('contacto.html', success=True)
+    ##return render_template ('contacto.html', success=True, message=message)
 
   return render_template ('contacto.html')
-
-
-
-
-    
-
-  
-
 
 
 

@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<!--Este código &nbsp; es muy necesario porque sirve para dejar espación entre parrafos y hace que se vea mas presentable, aunque html no sea para dar estilo si no funciones pero aun así estos espación son fundamentales para ubicar en buen estados los container que utilizaremos en css para darle forma-->
+<p>&nbsp;</p>
 
 <a class="btn btn-outline-success" href="{{ url_for('login') }}" role="button">Ingresar</a>
 
@@ -20,6 +22,10 @@
   <a class="btn btn-primary btn-lg" href="{{ url_for('about') }}" role="button">Lee más</a>
   </p>
 </div>
+
+<p class="lead">En si toda la información que está dentro de la página es 100% veráz, sólo que el pryecto se está desarrollando al transcurrir del primer semestre del 2021 y como tal no se puede ingresar a la universidad para recolectar datos de especies, imagenes y videos, además de que por el paro nacional ocacionado en Colombia el personal de la universidad no contestaban correos y por ello tampoco pudimos obtener información oficial de la universidad por estos casos, toda la información del proyecto se encuentra dentro de páginas de la U junto con ayudas de algunos profesores, se espera que si alguna vez se puede llegar ingresar a la Universidad completar buena información de la página</p>
+
+<p>&nbsp;</p>
 
 {% endblock %}
 
